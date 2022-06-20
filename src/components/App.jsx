@@ -1,15 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import useLocalStorage from '../hooks/useLocalStorage';
 
 import ContactForm from './contactForm';
 import ContactList from './contactList';
 import FilterContact from './filter';
 
 function App() {
-  const [contacts, setContacts] = useLocalStorage('contactList', []);
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem('contactList')) ?? []
+  );
   const [filter, setFilter] = useState('');
+
+  useEffect(() => {
+    window.localStorage.setItem('contactList', JSON.stringify(contacts));
+  }, [contacts]);
 
   const handleFilterChange = e => {
     setFilter(e.currentTarget.value);

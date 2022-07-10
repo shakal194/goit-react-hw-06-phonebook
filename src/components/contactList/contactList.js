@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ContactItem } from './contactItem';
 import s from './contactList.module.css';
 
-const contactList = () => {
+const ContactList = () => {
   const dispatch = useDispatch();
   const filteredContacts = useSelector(getFilteredContacts);
   return (
@@ -23,4 +23,4 @@ const contactList = () => {
   );
 };
 
-export default contactList;
+export default ContactList;

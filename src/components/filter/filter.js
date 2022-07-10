@@ -1,7 +1,12 @@
+import actions from 'components/redux/actions';
 import proptypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import s from './filter.module.css';
 
-const filter = ({ title, value, onChange }) => {
+const Filter = ({ title }) => {
+  const value = useSelector(state => state.contacts.filter);
+
+  const dispatch = useDispatch();
   return (
     <label className={s.label}>
       <span className={s.label__title}>{title}</span>
@@ -10,16 +15,14 @@ const filter = ({ title, value, onChange }) => {
         type="text"
         name="filter"
         value={value}
-        onChange={onChange}
+        onChange={e => dispatch(actions.changeFilter(e.currentTarget.value))}
       />
     </label>
   );
 };
 
-filter.prototype = {
+Filter.propTypes = {
   title: proptypes.string.isRequired,
-  value: proptypes.string.isRequired,
-  onChange: proptypes.string.isRequired,
 };
 
-export default filter;
+export default Filter;

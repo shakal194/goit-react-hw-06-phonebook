@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -8,17 +7,6 @@ import { App } from 'components/App/App';
 import store from './components/redux/store';
 
 import './index.css';
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Provider store={store.store}>
-//       <PersistGate loading={null} persistor={store.persistor}>
-//         <App />
-//       </PersistGate>
-//     </Provider>
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);

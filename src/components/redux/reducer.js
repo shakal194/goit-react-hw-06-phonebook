@@ -1,14 +1,13 @@
-import { nanoid } from 'nanoid';
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import actions from './actions';
 
 const items = createReducer([], {
-  [actions.contactAdd]: (state, { payload: { name, number } }) => {
+  [actions.contactAdd]: (state, { payload: { id, name, number } }) => {
     return [
       ...state,
       {
-        id: nanoid(),
+        id,
         name,
         number,
       },

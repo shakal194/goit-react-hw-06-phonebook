@@ -4,6 +4,7 @@ import actions from 'components/redux/actions';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import s from './contactForm.module.css';
 import { getContacts } from 'components/redux/selectors';
+import { nanoid } from 'nanoid';
 
 function ContactForm() {
   const [name, setName] = useState('');
@@ -35,6 +36,7 @@ function ContactForm() {
     } else {
       dispatch(
         actions.contactAdd({
+          id: nanoid(),
           name,
           number,
         })

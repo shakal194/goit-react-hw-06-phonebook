@@ -3,14 +3,10 @@ import { createReducer } from '@reduxjs/toolkit';
 import actions from './actions';
 
 const items = createReducer([], {
-  [actions.contactAdd]: (state, { payload: { id, name, number } }) => {
+  [actions.contactAdd]: (state, { payload }) => {
     return [
       ...state,
-      {
-        id,
-        name,
-        number,
-      },
+      payload,
     ];
   },
 
